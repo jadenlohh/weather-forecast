@@ -105,19 +105,29 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', function(
 });
 
 
-$.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(body, status){
-    for (i in body.items[0].forecasts) {
-        var h4tag = document.createElement('h4');
-        var ptag = document.createElement('p');
 
-        var h4text = document.createTextNode(body.items[0].forecasts[i].area);
-        var ptext = document.createTextNode(body.items[0].forecasts[i].forecast);
+function showForecast() {
+    $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(body, status){
+        var selected_area = document.getElementById('chooseLocation').value;
 
-        h4tag.appendChild(h4text);
-        ptag.appendChild(ptext);
+        for (i in body.items[0].forecasts) {
+            if (body.items[0].forecasts[i].area == selected_area) {
+                var start_time = body.items[0].valid_period.start.replace('+08:00', '');
+                var end_time = body.items[0].valid_period.end.replace('+08:00', '');
+                var updated_timestamp = body.items[0].timestamp.replace('+08:00', '');
 
-        var container = document.getElementById('2h-north-regions');
-        container.appendChild(h4tag);
-        container.appendChild(ptag);
-    }
-});
+                // split date and time from string
+                start_array = start_time.split('T');
+                end_array = end_time.split('T');
+                updatedTime_array = updated_timestamp.split('T');
+
+                document.getElementById('terms').style.display = 'block';
+                $('#timestamp-2h').html(`From ${start_array[0]} ${tConvert(start_array[1])} to ${end_array[0]} ${tConvert(end_array[1])}`);
+                $('#updated_timestamp-2h').html(`2) Last updated on ${updatedTime_array[0]} ${tConvert(updatedTime_array[1])}`);
+
+                $('#location').html(body.items[0].forecasts[i].area);
+                $('#location-forecast').html(`The weather is ${body.items[0].forecasts[i].forecast}`);
+            } 
+        }
+    });
+}

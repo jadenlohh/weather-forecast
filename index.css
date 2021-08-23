@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+#forecast-24h {
+    border-left: 4px solid grey;
+    padding-left: 25px;
+    margin-top: 2vw;
+}
+.tab-content .row {
+    margin-top: 15px;
+}
+#mapid {
+    height: 400px;
+    width: 600px;
+}
+.inline-text {
+    display: inline;
+    margin-right: 15px;
+}
+#terms {
+    display: none;
+}
+.location-data {
+    padding: 3vw;
+}
+#submit-btn {
+    margin-top: 10px;
+}
+footer {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 2vw;
+}
