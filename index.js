@@ -89,12 +89,12 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', function(
         var day = date.getDay();
 
         if (day == 0) {day = 'Sun'}
-        else if (day == 1) {day = 'Mon'}
-        else if (day == 2) {day = 'Tue'}
-        else if (day == 3) {day = 'Wed'}
-        else if (day == 4) {day = 'Thu'}
-        else if (day == 5) {day = 'Fri'}
-        else if (day == 6) {day = 'Sat'}
+        else if (day == 1) {day = 'Monday'}
+        else if (day == 2) {day = 'Tuesday'}
+        else if (day == 3) {day = 'Wednesday'}
+        else if (day == 4) {day = 'Thursday'}
+        else if (day == 5) {day = 'Friday'}
+        else if (day == 6) {day = 'Saturday'}
 
         $(`#day${i}`).html(day);
         $(`#day${i}_humidity`).html(`${data[i].relative_humidity.low} - ${data[i].relative_humidity.high}%`);
@@ -105,19 +105,19 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', function(
 });
 
 
+$.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(body, status){
+    for (i in body.items[0].forecasts) {
+        var h4tag = document.createElement('h4');
+        var ptag = document.createElement('p');
 
-function load_map() {
-    var selected_area = document.getElementsByName('location');
-    $.ajax({
-        async: false,
-        url: 'https://api.data.gov.sg/v1/environment/2-hour-weather-forecast',
-        type: "GET",
-        success: function(data){ 
-            for (i in data.items[0].forecasts) {
-                if (data.items[0].forecasts[i].area == selected_area) {
-                    $('#2h-forecast').html(`The weather in ${selected_area} is ${x.items[0].forecasts[i].forecast}`);
-                }
-            }
-        }
-    });
-}
+        var h4text = document.createTextNode(body.items[0].forecasts[i].area);
+        var ptext = document.createTextNode(body.items[0].forecasts[i].forecast);
+
+        h4tag.appendChild(h4text);
+        ptag.appendChild(ptext);
+
+        var container = document.getElementById('2h-north-regions');
+        container.appendChild(h4tag);
+        container.appendChild(ptag);
+    }
+});
