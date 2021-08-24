@@ -3,8 +3,11 @@
 }
 #forecast-24h {
     border-left: 4px solid grey;
-    padding-left: 25px;
-    margin-top: 2vw;
+    padding-left: 20px;
+    margin: 2vw 0 0 6vw;
+}
+#myTab {
+    margin-top: 3vw;
 }
 .tab-content .row {
     margin-top: 15px;
