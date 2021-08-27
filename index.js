@@ -88,7 +88,7 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', function(
         var date = new Date(data[i].date);
         var day = date.getDay();
 
-        if (day == 0) {day = 'Sun'}
+        if (day == 0) {day = 'Sunday'}
         else if (day == 1) {day = 'Monday'}
         else if (day == 2) {day = 'Tuesday'}
         else if (day == 3) {day = 'Wednesday'}
