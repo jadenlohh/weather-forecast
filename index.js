@@ -97,10 +97,10 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', function(
         else if (day == 6) {day = 'Saturday'}
 
         $(`#day${i}`).html(day);
+        $(`#day${i}_forecast`).html(data[i].forecast);
         $(`#day${i}_humidity`).html(`${data[i].relative_humidity.low} - ${data[i].relative_humidity.high}%`);
         $(`#day${i}_temperature`).html(`${data[i].temperature.low} - ${data[i].temperature.high}&deg;C`);
         $(`#day${i}_windSpeed`).html(`${data[i].wind.direction} ${data[i].wind.speed.low} - ${data[i].wind.speed.high}km/h`);
-        $(`#day${i}_forecast`).html(body.items[0].forecasts[i].forecast);
     }
 });
 
