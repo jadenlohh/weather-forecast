@@ -34,3 +34,15 @@ footer {
     text-align: center;
     margin-top: 2vw;
 }
+
+
+@media screen and (max-width: 576px) {
+    #mapid {
+        width: 460px;
+    }
+    #forecast-24h {
+        border-left: none;
+        padding-right: 0;
+        margin: 2vw 0 0 0;
+    }
+}
