@@ -1,4 +1,90 @@
-* {
+:root {
+    --search-bar-border: 1px solid #b3b3b3;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.readings {
+    position: fixed;
+    right: 15px;
+    top: 8px;
+    width: 430px;
+}
+
+.weather-container {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+    padding: 15px 35px;
+    height: 251px;
+}
+
+.search-bar .input-group-text {
+    background-color: white;
+    border: var(--search-bar-border);
+    border-right: none;
+    border-radius: 8px;
+}
+
+.search-bar input[type="search"] {
+    border-radius: 8px;
+    border: var(--search-bar-border);
+    border-left: none;
+    padding: 8px;
+    width: calc(430px - 41px);
+}
+
+.search-bar input[type="search"]:focus {
+    outline: none;
+}
+
+.arrow-down {
+    font-size: 20px;
+    position: absolute;
+    padding: 8px;
+    left: 50%;
+    margin-left: -18px;
+    margin-top: -3px;
+}
+
+.arrow-down:hover {
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { height: 251px; }
+    to { height: 44vw; }
+}
+
+.more-readings {
+    display: none;
+}
+
+.weather-4d-card {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.mapboxgl-ctrl-bottom-right {
+    display: none;
+}
+
+
+/* * {
     box-sizing: border-box;
 }
 #forecast-24h {
@@ -45,4 +131,4 @@ footer {
         padding-right: 0;
         margin: 2vw 0 0 0;
     }
-}
+} */
