@@ -1,8 +1,7 @@
-# Weather System
+# Weather-system
 A weather system that shows what the weather is like in the different parts of Singapore
 
-See the website live in action [here](https://sgweather.netlify.app)
-
+See the website live in action [here](https://sgweather.netlify.app)<br><br>
 
 ## Improvements
 ### Latest version (v2)
