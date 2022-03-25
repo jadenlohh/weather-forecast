@@ -18,19 +18,26 @@
     background: #555;
 }
 
-.readings {
+.weather-container {
     position: fixed;
     right: 15px;
     top: 8px;
     width: 430px;
 }
 
-.weather-container {
+.mobile-slider {
+    border-radius: 12px;
+    opacity: 0;
+    margin-bottom: 10px;
+    width: 55%;
+}
+
+.weather-readings {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: white;
     border-radius: 8px;
     position: relative;
-    padding: 15px 35px;
+    padding: 20px 35px;
     height: 251px;
 }
 
@@ -59,7 +66,7 @@
     padding: 8px;
     left: 50%;
     margin-left: -18px;
-    margin-top: -3px;
+    margin-top: -8px;
 }
 
 .arrow-down:hover {
@@ -84,51 +91,50 @@
 }
 
 
-/* * {
-    box-sizing: border-box;
-}
-#forecast-24h {
-    border-left: 4px solid grey;
-    padding-left: 20px;
-    margin: 2vw 0 0 6vw;
-}
-#myTab {
-    margin-top: 3vw;
-}
-.tab-content .row {
-    margin-top: 15px;
-}
-#mapid {
-    height: 400px;
-    width: 600px;
-}
-.inline-text {
-    display: inline;
-    margin-right: 15px;
-}
-#terms {
-    display: none;
-}
-.location-data {
-    padding: 3vw 1vw;
-}
-#submit-btn {
-    margin-top: 10px;
-}
-footer {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 2vw;
-}
-
-
-@media screen and (max-width: 576px) {
-    #mapid {
-        width: 460px;
+@media (max-width: 575.98px) {
+    ::-webkit-scrollbar {
+        display: none;
     }
-    #forecast-24h {
-        border-left: none;
-        padding-right: 0;
-        margin: 2vw 0 0 0;
+
+    .mapboxgl-ctrl-bottom-left {
+        z-index: 1;
     }
-} */
+
+    .weather-container {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+        height: 50px;
+    }
+
+    .mobile-slider {
+        opacity: 0.3;
+    }
+
+    .weather-readings-container {
+        position: relative;
+        top: 68vh;
+    }
+
+    .weather-readings {
+        overflow-y: scroll;
+        height: 20vh;
+    }
+
+    .arrow-down {
+        display: none;
+    }
+
+    .more-readings {
+        display: block;
+    }
+
+    @keyframes slideUp {
+        to { top: 8px; }
+    }
+
+    @keyframes slideDown {
+        to { top: 68vh; }
+    }
+}

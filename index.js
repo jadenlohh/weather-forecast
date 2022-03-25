@@ -31,16 +31,7 @@ $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', (body) =>
 });
 
 
-function showMoreReadings() {
-    $('.arrow-down').css('display', 'none');
-    $('.weather-container').css('animation', 'slideDown 800ms forwards');
-
-    setTimeout(() => {
-        $('.more-readings').css('display', 'block');
-        $('.weather-container').css('overflow-y', 'scroll');
-    }, 800);
-
-    $.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', (body) => {
+$.get('https://api.data.gov.sg/v1/environment/4-day-weather-forecast', (body) => {
         const data = body.items[0].forecasts;
         var num = 1;
         
@@ -58,6 +49,16 @@ function showMoreReadings() {
             num ++;
         };
     });
+
+
+function showMoreReadings() {
+    $('.arrow-down').css('display', 'none');
+    $('.weather-readings').css('animation', 'slideDown 500ms forwards');
+
+    setTimeout(() => {
+        $('.more-readings').css('display', 'block');
+        $('.weather-readings').css('overflow-y', 'scroll');
+    }, 500);
 };
 
 
@@ -70,3 +71,21 @@ const map = new mapboxgl.Map({
     zoom: 10.5
 });
 // new mapboxgl.Marker().setLngLat([103.839, 1.375]).addTo(map);
+
+
+var lastScrollTop = 0;
+
+$('.weather-readings').scroll((event) => {
+    var st = $(this).scrollTop();
+
+    if (st > lastScrollTop) {
+        $('.weather-readings-container').css('animation', 'slideDown 500ms forwards');
+        $('.weather-readings').css('height', '20vh');
+
+    } else {
+        $('.weather-readings-container').css('animation', 'slideUp 500ms forwards');
+        $('.weather-readings').css('height', '100vh');
+    }
+
+    lastScrollTop = st;
+});
