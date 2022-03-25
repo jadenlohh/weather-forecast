@@ -104,8 +104,13 @@
         position: fixed;
         left: 50%;
         transform: translate(-50%, 0);
-        z-index: 2;
         height: 50px;
+        width: 350px;
+        z-index: 2;
+    }
+
+    .search-bar input[type="search"] {
+        width: 88%;
     }
 
     .mobile-slider {
@@ -114,12 +119,14 @@
 
     .weather-readings-container {
         position: relative;
-        top: 68vh;
+        top: 73vh;
     }
 
     .weather-readings {
         overflow-y: scroll;
-        height: 20vh;
+        height: 50vh;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .arrow-down {
