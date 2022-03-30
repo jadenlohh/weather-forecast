@@ -13,15 +13,14 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
-
     <script src="https://kit.fontawesome.com/aa241108d7.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="index.css">
     <title>Weather System</title>
 </head>
 <body>
+    <i class="fa-solid fa-circle-notch fa-spin fa-3x loading-icon"></i>
+
     <div id="map" style='width: 100%;height: 100vh;'></div>
 
     <div class="weather-container">
@@ -31,10 +30,16 @@
         </div>
 
         <div class="weather-readings-container mt-3">
-            <hr class="mx-auto mobile-slider" style="height: 3px;">
-        
             <div class="weather-readings">
-                <h6 style="font-family: 'Rubik', sans-serif;">24-hour weather forecast</h6>
+                <div class="row">
+                    <div class="col-10">
+                        <h6 style="font-family: 'Rubik', sans-serif;">24-hour weather forecast</h6>
+                    </div>
+                    <div class="col-2" style="text-align: right;">
+                        <i class="fa-solid fa-xmark cross" style="display: none;cursor: pointer;font-size: 24px;" onclick="hideReadings()" title="Minimize Data"></i>
+                    </div>
+                </div>
+
                 <h2 class="weather-24h"></h2>
                 <h6><i class="fa-solid fa-location-dot"></i>&nbsp; Singapore</h6>
 
@@ -67,113 +72,43 @@
                     <hr class="my-4 mx-auto" style="width: 75%;">
                     <h6 style="font-family: 'Rubik', sans-serif;">4-day weather forecast</h6>
 
-                    <div class="weather-4d-card">
-                        <h5 class="mt-3 ps-3 pt-3 day1"></h5>
+                    <div class="weather-4d-content"></div>
 
-                        <div class="row ps-3 pb-3">
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-temperature-full"></i>&nbsp; <span class="temperature-d1"></span> &deg;C
-                                </p>
-                            </div>
-        
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Humidity</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-droplet"></i>&nbsp; <span class="humidity-d1"></span>%
-                                </p>
-                            </div>
-
-                            <div class="col-12 mt-3">
-                                <p class="mb-0" style="color: #4d4d4d;">Weather</p>
-                                <p class="mb-0 weather-d1"></p>
+                    <template class="weather-4d-template">
+                        <div class="weather-4d-card">
+                            <h5 class="mt-3 ps-3 pt-3 day-4d"></h5>
+    
+                            <div class="row ps-3 pb-3">
+                                <div class="col-6">
+                                    <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
+                                    <p class="mb-0">
+                                        <i class="fa-solid fa-temperature-full"></i>&nbsp; <span class="temperature-4d"></span> &deg;C
+                                    </p>
+                                </div>
+            
+                                <div class="col-6">
+                                    <p class="mb-0" style="color: #4d4d4d;">Humidity</p>
+                                    <p class="mb-0">
+                                        <i class="fa-solid fa-droplet"></i>&nbsp; <span class="humidity-4d"></span>%
+                                    </p>
+                                </div>
+    
+                                <div class="col-12 mt-3">
+                                    <p class="mb-0" style="color: #4d4d4d;">Weather</p>
+                                    <p class="mb-0 weather-4d"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="weather-4d-card">
-                        <h5 class="mt-3 ps-3 pt-3 day2"></h5>
-
-                        <div class="row ps-3 pb-3">
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-temperature-full"></i>&nbsp; <span class="temperature-d2"></span> &deg;C
-                                </p>
-                            </div>
-        
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Humidity</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-droplet"></i>&nbsp; <span class="humidity-d2"></span>%
-                                </p>
-                            </div>
-
-                            <div class="col-12 mt-3">
-                                <p class="mb-0" style="color: #4d4d4d;">Weather</p>
-                                <p class="mb-0 weather-d2"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="weather-4d-card">
-                        <h5 class="mt-3 ps-3 pt-3 day3"></h5>
-
-                        <div class="row ps-3 pb-3">
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-temperature-full"></i>&nbsp; <span class="temperature-d3"></span> &deg;C
-                                </p>
-                            </div>
-        
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Humidity</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-droplet"></i>&nbsp; <span class="humidity-d3"></span>%
-                                </p>
-                            </div>
-
-                            <div class="col-12 mt-3">
-                                <p class="mb-0" style="color: #4d4d4d;">Weather</p>
-                                <p class="mb-0 weather-d3"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="weather-4d-card">
-                        <h5 class="mt-3 ps-3 pt-3 day4"></h5>
-
-                        <div class="row ps-3 pb-3">
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-temperature-full"></i>&nbsp; <span class="temperature-d4"></span> &deg;C
-                                </p>
-                            </div>
-        
-                            <div class="col-6">
-                                <p class="mb-0" style="color: #4d4d4d;">Humidity</p>
-                                <p class="mb-0">
-                                    <i class="fa-solid fa-droplet"></i>&nbsp; <span class="humidity-d4"></span>%
-                                </p>
-                            </div>
-
-                            <div class="col-12 mt-3">
-                                <p class="mb-0" style="color: #4d4d4d;">Weather</p>
-                                <p class="mb-0 weather-d4"></p>
-                            </div>
-                        </div>
-                    </div>
+                    </template>
                 </div>
 
-                <i class="fa-solid fa-circle-arrow-down arrow-down" onclick="showMoreReadings()"></i>
+                <i class="fa-solid fa-chevron-down arrow-down" onclick="showMoreReadings()" title="Show More Data"></i>
             </div>
         </div>
     </div>
     
     <script src="index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaJjrn-C_RlBiP7yrTtSEZPFzyBwxCt_s&callback=initMap&v=weekly" async></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

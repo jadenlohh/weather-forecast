@@ -1,5 +1,6 @@
 :root {
     --search-bar-border: 1px solid #b3b3b3;
+    --weather-reading-container: 270px;
 }
 
 ::-webkit-scrollbar {
@@ -12,24 +13,27 @@
 
 ::-webkit-scrollbar-thumb {
     background: #888;
+    border-radius: 50px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
+.loading-icon {
+    display: none;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 99;
+}
+
 .weather-container {
     position: fixed;
     right: 15px;
     top: 8px;
-    width: 430px;
-}
-
-.mobile-slider {
-    border-radius: 12px;
-    opacity: 0;
-    margin-bottom: 10px;
-    width: 55%;
+    width: 420px;
 }
 
 .weather-readings {
@@ -38,7 +42,7 @@
     border-radius: 8px;
     position: relative;
     padding: 20px 35px;
-    height: 251px;
+    height: var(--weather-reading-container);
 }
 
 .search-bar .input-group-text {
@@ -53,7 +57,7 @@
     border: var(--search-bar-border);
     border-left: none;
     padding: 8px;
-    width: calc(430px - 41px);
+    width: calc(420px - 41px);
 }
 
 .search-bar input[type="search"]:focus {
@@ -61,21 +65,21 @@
 }
 
 .arrow-down {
+    cursor: pointer;
     font-size: 20px;
     position: absolute;
-    padding: 8px;
     left: 50%;
-    margin-left: -18px;
-    margin-top: -8px;
+    margin-left: -17.5px;
 }
 
-.arrow-down:hover {
-    cursor: pointer;
+@keyframes slideUp {
+    from { height: 44.5vw; }
+    to { height: var(--weather-reading-container); }
 }
 
 @keyframes slideDown {
-    from { height: 251px; }
-    to { height: 44vw; }
+    from { height: var(--weather-reading-container); }
+    to { height: 44.5vw; }
 }
 
 .more-readings {
@@ -86,62 +90,33 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-.mapboxgl-ctrl-bottom-right {
-    display: none;
-}
-
 
 @media (max-width: 575.98px) {
     ::-webkit-scrollbar {
         display: none;
     }
 
-    .mapboxgl-ctrl-bottom-left {
-        z-index: 1;
+    .loading-icon {
+        display: none !important;
     }
 
     .weather-container {
-        position: fixed;
         left: 50%;
         transform: translate(-50%, 0);
-        height: 50px;
         width: 350px;
-        z-index: 2;
     }
 
     .search-bar input[type="search"] {
         width: 88%;
     }
 
-    .mobile-slider {
-        opacity: 0.3;
-    }
-
-    .weather-readings-container {
-        position: relative;
-        top: 73vh;
-    }
-
-    .weather-readings {
-        overflow-y: scroll;
-        height: 50vh;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .arrow-down {
-        display: none;
-    }
-
-    .more-readings {
-        display: block;
-    }
-
     @keyframes slideUp {
-        to { top: 8px; }
+        from { height: 80vh; }
+        to { height: var(--weather-reading-container); }
     }
 
     @keyframes slideDown {
-        to { top: 68vh; }
+        from { height: var(--weather-reading-container); }
+        to { height: 80vh; }
     }
 }
