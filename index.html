@@ -23,7 +23,7 @@
 
     <div id="map" style='width: 100%;height: 100vh;'></div>
 
-    <div class="weather-container">
+    <div class="main-container">
         <div class="search-bar input-group">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
             <input type="search" placeholder="Search a location" aria-describedby="basic-addon1">
@@ -40,10 +40,10 @@
                     </div>
                 </div>
 
-                <h2 class="weather-24h"></h2>
-                <h6><i class="fa-solid fa-location-dot"></i>&nbsp; Singapore</h6>
+                <h2 class="weather-forecast-24h"></h2>
+                <h6 id="location"><i class="fa-solid fa-location-dot"></i>&nbsp; Singapore</h6>
 
-                <div class="mt-4">
+                <div class="mt-4 weather-readings-24h">
                     <div class="row">
                         <div class="col-6">
                             <p class="mb-0" style="color: #4d4d4d;">Temperature</p>
@@ -69,13 +69,13 @@
                 </div>
 
                 <div class="more-readings">
-                    <hr class="my-4 mx-auto" style="width: 75%;">
+                    <hr class="my-4 mx-auto" style="color: #bfbfbf;width: 75%;">
                     <h6 style="font-family: 'Rubik', sans-serif;">4-day weather forecast</h6>
 
-                    <div class="weather-4d-content"></div>
+                    <div class="weather-content-4D"></div>
 
-                    <template class="weather-4d-template">
-                        <div class="weather-4d-card">
+                    <template class="weather-template-4D">
+                        <div class="weather-card-4D">
                             <h5 class="mt-3 ps-3 pt-3 day-4d"></h5>
     
                             <div class="row ps-3 pb-3">
@@ -102,7 +102,7 @@
                     </template>
                 </div>
 
-                <i class="fa-solid fa-chevron-down arrow-down" onclick="showMoreReadings()" title="Show More Data"></i>
+                <i class="fa-solid fa-chevron-down arrow-down" onclick="showReadings()" title="Show More Data"></i>
             </div>
         </div>
     </div>

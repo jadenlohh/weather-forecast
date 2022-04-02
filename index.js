@@ -5,7 +5,7 @@ function getWeatherData() {
     $.get('https://api.data.gov.sg/v1/environment/24-hour-weather-forecast', (body) => {
         const data = body.items[0].general;
 
-        $('.weather-24h').html(data.forecast);
+        $('.weather-forecast-24h').html(data.forecast);
 
         $('.temperature-24h-low').html(data.temperature.low);
         $('.temperature-24h-high').html(data.temperature.high);
@@ -33,8 +33,8 @@ function getWeatherData() {
 
         $('.weather-day1').html(data[0].forecast);
 
-        var template = document.querySelector('.weather-4d-template');
-        var content = document.querySelector('.weather-4d-content');
+        var template = document.querySelector('.weather-template-4D');
+        var content = document.querySelector('.weather-content-4D');
         content.innerHTML = '';
 
         for (let x = 0; x <= 3; x++) {
@@ -66,49 +66,29 @@ setInterval(() => { getWeatherData(); }, 60000);
 
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 1.354, lng: 103.82 },
-        zoom: 12,
-        streetViewControl: false,
-        mapTypeControl: false,
+        center: { lat: 1.390, lng: 103.80 },
+        zoom: 11,
+        disableDefaultUI: true,
     });
 };
 
 
-function showMoreReadings() {
+function showReadings() {
     $('.arrow-down').css('display', 'none');
-    $('.weather-readings').css('animation', 'slideDown 500ms forwards');
+    $('.weather-readings-container').css('animation', 'slideDown 500ms forwards');
 
     setTimeout(() => {
         $('.more-readings').css('display', 'block');
-        $('.weather-readings').css('overflow-y', 'scroll');
+        $('.weather-readings-container').css('overflow-y', 'scroll');
         $('.cross').css('display', 'block');
     }, 500);
 };
 
 
 function hideReadings() {
-    document.getElementsByClassName('weather-readings')[0].scrollTo(0, 0);
+    document.getElementsByClassName('weather-readings-container')[0].scrollTo(0, 0);
     $('.arrow-down').css('display', 'block');
     $('.cross').css('display', 'none');
-    $('.weather-readings').css('overflow-y', 'hidden');
-    $('.weather-readings').css('animation', 'slideUp 500ms forwards');
-
+    $('.weather-readings-container').css({ 'overflow': 'hidden', 'animation': 'slideUp 500ms forwards' });
     $('.more-readings').css('display', 'none');
 };
-
-
-var lastScrollTop = 0;
-
-$('.weather-readings').scroll((event) => {
-    var st = $(this).scrollTop();
-
-        // $('.weather-readings-container').css('animation', 'slideDown 500ms forwards');
-        // $('.weather-readings').css('height', '20vh');
-
-    if (st == 0) {
-        $('.weather-readings-container').css('animation', 'slideUp 500ms forwards');
-        $('.weather-readings').css('height', '90vh');
-    }
-
-    lastScrollTop = st;
-});

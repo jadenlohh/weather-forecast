@@ -1,6 +1,6 @@
 :root {
     --search-bar-border: 1px solid #b3b3b3;
-    --weather-reading-container: 270px;
+    --weather-readings-container: 270px;
 }
 
 ::-webkit-scrollbar {
@@ -22,27 +22,18 @@
 
 .loading-icon {
     display: none;
-    font-size: 24px;
+    font-size: 22px;
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 99;
 }
 
-.weather-container {
+.main-container {
     position: fixed;
-    right: 15px;
     top: 8px;
+    right: 15px;
     width: 420px;
-}
-
-.weather-readings {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background-color: white;
-    border-radius: 8px;
-    position: relative;
-    padding: 20px 35px;
-    height: var(--weather-reading-container);
 }
 
 .search-bar .input-group-text {
@@ -64,6 +55,17 @@
     outline: none;
 }
 
+.weather-readings-container {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: 8px;
+    height: var(--weather-readings-container);
+}
+
+.weather-readings { 
+    padding: 20px 35px;
+}
+
 .arrow-down {
     cursor: pointer;
     font-size: 20px;
@@ -72,22 +74,22 @@
     margin-left: -17.5px;
 }
 
-@keyframes slideUp {
-    from { height: 44.5vw; }
-    to { height: var(--weather-reading-container); }
-}
-
-@keyframes slideDown {
-    from { height: var(--weather-reading-container); }
-    to { height: 44.5vw; }
-}
-
 .more-readings {
     display: none;
 }
 
-.weather-4d-card {
+.weather-card-4D {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+@keyframes slideUp {
+    from { height: 44.5vw; }
+    to { height: var(--weather-readings-container); }
+}
+
+@keyframes slideDown {
+    from { height: var(--weather-readings-container); }
+    to { height: 44.5vw; }
 }
 
 
@@ -100,7 +102,7 @@
         display: none !important;
     }
 
-    .weather-container {
+    .main-container {
         left: 50%;
         transform: translate(-50%, 0);
         width: 350px;
@@ -110,13 +112,19 @@
         width: 88%;
     }
 
+
+
+    .arrow-down {
+        padding-bottom: 10px;
+    }        
+
     @keyframes slideUp {
         from { height: 80vh; }
-        to { height: var(--weather-reading-container); }
+        to { height: var(--weather-readings-container); }
     }
 
     @keyframes slideDown {
-        from { height: var(--weather-reading-container); }
+        from { height: var(--weather-readings-container); }
         to { height: 80vh; }
     }
 }
