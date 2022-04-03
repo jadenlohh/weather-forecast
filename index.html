@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/aa241108d7.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="index.css">
-    <title>Weather System</title>
+    <title>Weather Forecast</title> 
 </head>
 <body>
     <i class="fa-solid fa-circle-notch fa-spin fa-3x loading-icon"></i>
@@ -25,23 +25,28 @@
 
     <div class="main-container">
         <div class="search-bar input-group">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="search" placeholder="Search a location" aria-describedby="basic-addon1">
+            <span class="input-group-text" id="searchBar"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="search" placeholder="Search a location" aria-describedby="searchBar" id="search">
+
+            <ul class="dropdown-menu location-list" aria-labelledby="searchBar" style="top: 40px;width: 100%;">
+                <li class="dropdown-item disabled no-location" style="display: none;">No location found</li>
+            </ul>
         </div>
 
-        <div class="weather-readings-container mt-3">
+        <div class="weather-readings-container mt-2">
             <div class="weather-readings">
                 <div class="row">
                     <div class="col-10">
-                        <h6 style="font-family: 'Rubik', sans-serif;">24-hour weather forecast</h6>
+                        <h6 style="font-family: 'Rubik', sans-serif;" class="forecast-type">24-hour weather forecast</h6>
                     </div>
+
                     <div class="col-2" style="text-align: right;">
                         <i class="fa-solid fa-xmark cross" style="display: none;cursor: pointer;font-size: 24px;" onclick="hideReadings()" title="Minimize Data"></i>
                     </div>
                 </div>
 
-                <h2 class="weather-forecast-24h"></h2>
-                <h6 id="location"><i class="fa-solid fa-location-dot"></i>&nbsp; Singapore</h6>
+                <h2 class="weather-forecast">-</h2>
+                <h6><i class="fa-solid fa-location-dot"></i>&nbsp; <span id="location">Singapore</span></h6>
 
                 <div class="mt-4 weather-readings-24h">
                     <div class="row">
@@ -72,10 +77,18 @@
                     <hr class="my-4 mx-auto" style="color: #bfbfbf;width: 75%;">
                     <h6 style="font-family: 'Rubik', sans-serif;">4-day weather forecast</h6>
 
-                    <div class="weather-content-4D"></div>
+                    <div class="weather-content-4d"></div>
 
-                    <template class="weather-template-4D">
-                        <div class="weather-card-4D">
+                    <div class="text-center mt-3" style="font-size: 12px;color: grey;">
+                        <p class="mb-0">Built by <a href="https://github.com/jadenlohh" target="_blank" rel="noopener noreferrer">Jaden loh</a></p>
+                        <p class="mb-0">
+                            Data obtained from <a href="https://data.gov.sg" target="_blank" rel="noopener noreferrer">data.gov.sg</a> &
+                            <a href="https://developers.google.com/maps" target="_blank" rel="noopener noreferrer">google map</a>
+                        </p>
+                    </div>
+
+                    <template class="weather-template-4d">
+                        <div class="weather-card-4d">
                             <h5 class="mt-3 ps-3 pt-3 day-4d"></h5>
     
                             <div class="row ps-3 pb-3">
