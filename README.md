@@ -1,6 +1,6 @@
-# Weather-system
+# Weather forecast
 
-A weather system that shows what the weather is like in the different parts of Singapore
+A weather forecast application that shows the weather in Singapore
 
 See the website live in action [here](https://sgweather.netlify.app)<br><br>
 
@@ -13,14 +13,14 @@ See the website live in action [here](https://sgweather.netlify.app)<br><br>
   <li>Application is now mobile-friendly</li>
 </ul><br>
 
-<img src="https://github.com/jadenlohh/weather-system/blob/v2/images/v2-screenshot.png">
-<p align="center" style="line-height: 0.1;"><i>Screenshot of weather-system v2</i></p><br>
+<img src="https://github.com/jadenlohh/weather-forecast/blob/v2/images/v2-screenshot.png">
+<p align="center" style="line-height: 0.1;"><i>Screenshot of application v2</i></p><br>
 
 ### Older version (v1)
 
-This is the older version of the weather system which is not very compatible on mobile and the design is significantly different from v2
+This is the older version of the application which is not compatible on mobile and the design is different from the latest version
 
-You can view and download the ZIP file [here](https://github.com/jadenlohh/weather-system/archive/refs/heads/v1.zip) or clone the `v1` branch locally<br><br>
+You can view and download the ZIP file [here](https://github.com/jadenlohh/weather-forecast/archive/refs/heads/v1.zip) or clone the `v1` branch locally<br><br>
 
-<img src="https://github.com/jadenlohh/weather-system/blob/v2/images/v1-screenshot.png">
-<p align="center" style="line-height: 0.1;"><i>Screenshot of weather-system v1</i></p>
+<img src="https://github.com/jadenlohh/weather-forecast/blob/v2/images/v1-screenshot.png">
+<p align="center" style="line-height: 0.1;"><i>Screenshot of application v1</i></p>
