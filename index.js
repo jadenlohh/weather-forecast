@@ -104,6 +104,7 @@ $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', (body) =
 
         li.appendChild(document.createTextNode(body.area_metadata[i].name));
         li.classList.add('dropdown-item');
+        li.style.cursor = 'pointer';
         li.onclick = viewLocationWeather;
 
         ul.appendChild(li);
@@ -121,19 +122,9 @@ document.getElementById('search').addEventListener('input', (e) => {
         for (x in li) {
             var location = li[x].innerHTML.toLowerCase();
 
-            if (location.includes(value)) {
-                li[x].classList.remove('hidden');
-            }
-            else {
-                li[x].classList.add('hidden');
-            };
+            location.includes(value) ? li[x].classList.remove('hidden') : li[x].classList.add('hidden');
 
-            if ($('.hidden').get().length > 47) {
-                $('.no-location').css('display', 'block');
-            }
-            else {
-                $('.no-location').css('display', 'none');
-            };
+            $('.hidden').get().length > 47 ? $('.no-location').css('display', 'block') : $('.no-location').css('display', 'none');
         };
     }
     else {
@@ -147,13 +138,15 @@ document.getElementById('search').addEventListener('input', (e) => {
 
 
 function viewLocationWeather() {
-    $('.loading-icon').css('display', 'block');
     $('.location-list').css('display', 'none');
+    var code = $('.weather-readings-container').html();
+    $('.weather-readings-container').html('<i class="fa-solid fa-circle-notch fa-spin fa-3x" style="position: absolute; top: 50%; left: 48%;font-size: 20px;"></i>');
 
     setTimeout(() => {
         $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', (body) => {
             var weatherLocations = body.items[0].forecasts;
             var areaMetadata = body.area_metadata;
+            forecastType = '2h';
 
             for (x in weatherLocations) {
                 if (weatherLocations[x].area == this.innerHTML) {
@@ -177,8 +170,7 @@ function viewLocationWeather() {
             };
         });
 
-        forecastType = '2h';
-        $('.loading-icon').css('display', 'none');
+        $('.weather-readings-container').html(code);
     }, 500);
 };
 

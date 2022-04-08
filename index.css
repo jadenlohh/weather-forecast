@@ -20,8 +20,7 @@
     background: #555;
 }
 
-a,
-a:hover {
+a, a:hover {
     color: grey;
 }
 
@@ -146,7 +145,27 @@ a:hover {
             height: var(--weather-readings-container);
         }
         to {
-            height: 80vh;
+            height: 85vh;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    @keyframes slideUp {
+        from {
+            height: 70vh;
+        }
+        to {
+            height: var(--weather-readings-container);
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            height: var(--weather-readings-container);
+        }
+        to {
+            height: 85vh;
         }
     }
 }
