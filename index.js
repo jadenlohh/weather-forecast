@@ -140,6 +140,7 @@ document.getElementById('search').addEventListener('input', (e) => {
 function viewLocationWeather() {
     $('.location-list').css('display', 'none');
     var code = $('.weather-readings-container').html();
+    document.getElementById('search').value = this.innerHTML;
     $('.weather-readings-container').html('<i class="fa-solid fa-circle-notch fa-spin fa-3x" style="position: absolute; top: 50%; left: 48%;font-size: 20px;"></i>');
 
     setTimeout(() => {
